@@ -1,11 +1,18 @@
-package com.meneses.legacy;
+package com.meneses.refactor.camera.impl;
+
+import com.meneses.legacy.camera.model.CameraFile;
+import com.meneses.legacy.camera.model.CameraFileMetadata;
+import com.meneses.refactor.CameraService;
+import com.meneses.refactor.camera.Photo;
+import com.meneses.refactor.camera.model.CameraCommand;
+import com.meneses.refactor.camera.model.CameraCommandResult;
 
 import java.util.List;
 
-public class CameraY implements Photo, Video {
+public class CameraX implements Photo {
     private final CameraService cameraService;
 
-    public CameraY(CameraService cameraService) {
+    public CameraX(CameraService cameraService) {
         this.cameraService = cameraService;
     }
 
@@ -14,8 +21,6 @@ public class CameraY implements Photo, Video {
         CameraCommand command = new CameraCommand.Builder()
                 .setToken(cameraService.getToken())
                 .setCode(1)
-                .setInformation("file")
-                .setType("photo")
                 .setFetchSize(10)
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
@@ -32,7 +37,6 @@ public class CameraY implements Photo, Video {
                 .setToken(cameraService.getToken())
                 .setCode(2)
                 .setInformation("metadata")
-                .setType("photo")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
         return parseToMetadataList(result);
@@ -52,57 +56,14 @@ public class CameraY implements Photo, Video {
         return parseToBoolean(result);
     }
 
+
+
+
+
+
     private Boolean parseToBoolean(CameraCommandResult result) {
         return true;
     }
-
-    @Override
-    public CameraFile getVideo() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(1)
-                .setFetchSize(10)
-                .setInformation("file")
-                .setType("video")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToFile(result);
-    }
-
-    @Override
-    public List<CameraFileMetadata> getVideosMetadata() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(2)
-                .setInformation("metadata")
-                .setType("videos")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToMetadataList(result);
-    }
-
-    @Override
-    public Boolean startVideoRecording() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(4)
-                .setInformation("video")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
-    }
-
-    @Override
-    public Boolean stopVideoRecording() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(5)
-                .setInformation("video")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
-    }
-
 
     @Override
     public Boolean saveMetadata(CameraFileMetadata metadata) {

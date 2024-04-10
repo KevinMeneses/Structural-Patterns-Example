@@ -1,4 +1,4 @@
-package com.meneses.legacy;
+package com.meneses.refactor.camera.model;
 
 public class CameraCommandResult {
     int commandCode;

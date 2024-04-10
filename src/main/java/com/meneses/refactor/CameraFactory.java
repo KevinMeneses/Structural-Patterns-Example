@@ -1,9 +1,9 @@
-package com.meneses.legacy;
+package com.meneses.refactor;
 
-import com.meneses.legacy.camera.Camera;
-import com.meneses.legacy.camera.impl.CameraX;
-import com.meneses.legacy.camera.impl.CameraY;
-import com.meneses.legacy.camera.impl.CameraZ;
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.impl.CameraX;
+import com.meneses.refactor.camera.impl.CameraY;
+import com.meneses.refactor.camera.impl.CameraZ;
 
 public class CameraFactory {
     private final CameraService cameraService;

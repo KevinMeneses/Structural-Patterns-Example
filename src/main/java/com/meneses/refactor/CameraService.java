@@ -1,8 +1,8 @@
-package com.meneses.legacy;
+package com.meneses.refactor;
 
 
-import com.meneses.legacy.camera.model.CameraCommand;
-import com.meneses.legacy.camera.model.CameraCommandResult;
+import com.meneses.refactor.camera.model.CameraCommand;
+import com.meneses.refactor.camera.model.CameraCommandResult;
 
 public class CameraService {
 

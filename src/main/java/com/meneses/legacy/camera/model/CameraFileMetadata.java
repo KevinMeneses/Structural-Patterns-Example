@@ -1,4 +1,4 @@
-package com.meneses.legacy;
+package com.meneses.legacy.camera.model;
 
 public class CameraFileMetadata {
     String policeOfficer;

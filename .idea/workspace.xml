@@ -4,13 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6bf961b-00f7-4705-ab28-a0819a5236bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="c6bf961b-00f7-4705-ab28-a0819a5236bb" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/logger/DataDogLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/logger/LocalLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/logger/NewRelicLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/Audio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/model/CameraCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraCommandResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/model/CameraCommandResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/model/CameraFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraFileMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/model/CameraFileMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/CameraZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/Photo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/Video.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,9 +52,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/kevinmeneses/IdeaProjects/structural-patterns-example/src/main/java/com/meneses"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/meneses" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -48,6 +77,19 @@
       <option name="presentableId" value="Default" />
       <updated>1712717890376</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1712718103110</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712718103110</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>

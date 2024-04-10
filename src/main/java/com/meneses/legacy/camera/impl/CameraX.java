@@ -1,4 +1,11 @@
-package com.meneses.legacy;
+package com.meneses.legacy.camera.impl;
+
+import com.meneses.legacy.*;
+import com.meneses.legacy.camera.Photo;
+import com.meneses.legacy.camera.model.CameraCommand;
+import com.meneses.legacy.camera.model.CameraCommandResult;
+import com.meneses.legacy.camera.model.CameraFile;
+import com.meneses.legacy.camera.model.CameraFileMetadata;
 
 import java.util.List;
 

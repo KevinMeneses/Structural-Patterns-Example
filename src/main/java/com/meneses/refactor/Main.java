@@ -1,14 +1,14 @@
-package com.meneses.legacy;
+package com.meneses.refactor;
 
-import com.meneses.legacy.camera.Audio;
-import com.meneses.legacy.camera.Camera;
-import com.meneses.legacy.camera.Photo;
-import com.meneses.legacy.camera.Video;
-import com.meneses.legacy.camera.impl.CameraY;
-import com.meneses.legacy.camera.impl.CameraZ;
-import com.meneses.legacy.logger.DataDogLogger;
-import com.meneses.legacy.logger.LocalLogger;
-import com.meneses.legacy.logger.NewRelicLogger;
+import com.meneses.refactor.camera.Audio;
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.Photo;
+import com.meneses.refactor.camera.Video;
+import com.meneses.refactor.camera.impl.CameraY;
+import com.meneses.refactor.camera.impl.CameraZ;
+import com.meneses.refactor.logger.DataDogLogger;
+import com.meneses.refactor.logger.LocalLogger;
+import com.meneses.refactor.logger.NewRelicLogger;
 
 import java.util.Scanner;
 

@@ -1,12 +1,32 @@
-package com.meneses.legacy;
+package com.meneses.refactor.camera.impl;
+
+import com.meneses.legacy.camera.model.CameraFile;
+import com.meneses.legacy.camera.model.CameraFileMetadata;
+import com.meneses.refactor.CameraService;
+import com.meneses.refactor.camera.Photo;
+import com.meneses.refactor.camera.Video;
+import com.meneses.refactor.camera.model.CameraCommand;
+import com.meneses.refactor.camera.model.CameraCommandResult;
+import com.meneses.refactor.logger.LocalLogger;
+import com.meneses.refactor.logger.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraZ implements Photo, Video, Audio {
+public class CameraY implements Photo, Video {
     private final CameraService cameraService;
+    private NewRelicLogger newRelicLogger;
+    private LocalLogger localLogger;
 
-    public CameraZ(CameraService cameraService) {
+    public CameraY(CameraService cameraService) {
         this.cameraService = cameraService;
+    }
+
+    public void setNewRelicLogger(NewRelicLogger newRelicLogger) {
+        this.newRelicLogger = newRelicLogger;
+    }
+
+    public void setLocalLogger(LocalLogger localLogger) {
+        this.localLogger = localLogger;
     }
 
     @Override
@@ -49,7 +69,17 @@ public class CameraZ implements Photo, Video, Audio {
                 .setCode(3)
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
+        Boolean isSuccess = parseToBoolean(result);
+
+        if (newRelicLogger != null) {
+            newRelicLogger.logEvent("takePhoto", isSuccess.toString());
+        }
+
+        if (localLogger != null) {
+            localLogger.logEvent("takePhoto", isSuccess.toString());
+        }
+
+        return isSuccess;
     }
 
     private Boolean parseToBoolean(CameraCommandResult result) {
@@ -64,7 +94,6 @@ public class CameraZ implements Photo, Video, Audio {
                 .setFetchSize(10)
                 .setInformation("file")
                 .setType("video")
-                .setOffset(3)
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
         return parseToFile(result);
@@ -90,7 +119,17 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
+        Boolean isSuccess = parseToBoolean(result);
+
+        if (newRelicLogger != null) {
+            newRelicLogger.logEvent("startVideoRecording", isSuccess.toString());
+        }
+
+        if (localLogger != null) {
+            localLogger.logEvent("startVideoRecording", isSuccess.toString());
+        }
+
+        return isSuccess;
     }
 
     @Override
@@ -101,56 +140,19 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
+        Boolean isSuccess = parseToBoolean(result);
+
+        if (newRelicLogger != null) {
+            newRelicLogger.logEvent("stopVideoRecording", isSuccess.toString());
+        }
+
+        if (localLogger != null) {
+            localLogger.logEvent("stopVideoRecording", isSuccess.toString());
+        }
+
+        return isSuccess;
     }
 
-    @Override
-    public CameraFile getAudio() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(1)
-                .setFetchSize(10)
-                .setInformation("file")
-                .setType("audio")
-                .setOffset(3)
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToFile(result);
-    }
-
-    @Override
-    public List<CameraFileMetadata> getAudiosMetadata() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(2)
-                .setInformation("metadata")
-                .setType("audios")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToMetadataList(result);
-    }
-
-    @Override
-    public Boolean startAudioRecording() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(6)
-                .setInformation("audio")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
-    }
-
-    @Override
-    public Boolean stopAudioRecording() {
-        CameraCommand command = new CameraCommand.Builder()
-                .setToken(cameraService.getToken())
-                .setCode(7)
-                .setInformation("video")
-                .build();
-        CameraCommandResult result = cameraService.sendCommand(command);
-        return parseToBoolean(result);
-    }
 
     @Override
     public Boolean saveMetadata(CameraFileMetadata metadata) {
