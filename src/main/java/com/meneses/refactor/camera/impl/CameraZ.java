@@ -1,42 +1,19 @@
 package com.meneses.refactor.camera.impl;
 
-import com.meneses.legacy.camera.model.CameraFile;
-import com.meneses.legacy.camera.model.CameraFileMetadata;
 import com.meneses.refactor.CameraService;
-import com.meneses.refactor.camera.Audio;
-import com.meneses.refactor.camera.Photo;
-import com.meneses.refactor.camera.Video;
+import com.meneses.refactor.camera.FullCamera;
 import com.meneses.refactor.camera.model.CameraCommand;
 import com.meneses.refactor.camera.model.CameraCommandResult;
-import com.meneses.refactor.logger.DataDogLogger;
-import com.meneses.refactor.logger.LocalLogger;
-import com.meneses.refactor.logger.NewRelicLogger;
+import com.meneses.refactor.camera.model.CameraFile;
+import com.meneses.refactor.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public class CameraZ implements Photo, Video, Audio {
+public class CameraZ implements FullCamera {
     private final CameraService cameraService;
-    private static List<CameraFileMetadata> photosMetadata;
-    private static List<CameraFileMetadata> videosMetadata;
-    private static List<CameraFileMetadata> audiosMetadata;
-    private DataDogLogger dataDogLogger;
-    private NewRelicLogger newRelicLogger;
-    private LocalLogger localLogger;
 
     public CameraZ(CameraService cameraService) {
         this.cameraService = cameraService;
-    }
-
-    public void setDataDogLogger(DataDogLogger dataDogLogger) {
-        this.dataDogLogger = dataDogLogger;
-    }
-
-    public void setNewRelicLogger(NewRelicLogger newRelicLogger) {
-        this.newRelicLogger = newRelicLogger;
-    }
-
-    public void setLocalLogger(LocalLogger localLogger) {
-        this.localLogger = localLogger;
     }
 
     @Override
@@ -58,18 +35,14 @@ public class CameraZ implements Photo, Video, Audio {
 
     @Override
     public List<CameraFileMetadata> getPhotosMetadata() {
-        if (photosMetadata == null) {
-            CameraCommand command = new CameraCommand.Builder()
-                    .setToken(cameraService.getToken())
-                    .setCode(2)
-                    .setInformation("metadata")
-                    .setType("photo")
-                    .build();
-            CameraCommandResult result = cameraService.sendCommand(command);
-            photosMetadata = parseToMetadataList(result);
-        }
-
-        return photosMetadata;
+        CameraCommand command = new CameraCommand.Builder()
+                .setToken(cameraService.getToken())
+                .setCode(2)
+                .setInformation("metadata")
+                .setType("photo")
+                .build();
+        CameraCommandResult result = cameraService.sendCommand(command);
+        return parseToMetadataList(result);
     }
 
     private List<CameraFileMetadata> parseToMetadataList(CameraCommandResult result) {
@@ -83,21 +56,7 @@ public class CameraZ implements Photo, Video, Audio {
                 .setCode(3)
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (dataDogLogger != null) {
-            dataDogLogger.logEvent("takePhoto", isSuccess.toString());
-        }
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("takePhoto", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("takePhoto", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     private Boolean parseToBoolean(CameraCommandResult result) {
@@ -120,18 +79,14 @@ public class CameraZ implements Photo, Video, Audio {
 
     @Override
     public List<CameraFileMetadata> getVideosMetadata() {
-        if (videosMetadata == null) {
-            CameraCommand command = new CameraCommand.Builder()
-                    .setToken(cameraService.getToken())
-                    .setCode(2)
-                    .setInformation("metadata")
-                    .setType("videos")
-                    .build();
-            CameraCommandResult result = cameraService.sendCommand(command);
-            videosMetadata = parseToMetadataList(result);
-        }
-
-        return videosMetadata;
+        CameraCommand command = new CameraCommand.Builder()
+                .setToken(cameraService.getToken())
+                .setCode(2)
+                .setInformation("metadata")
+                .setType("videos")
+                .build();
+        CameraCommandResult result = cameraService.sendCommand(command);
+        return parseToMetadataList(result);
     }
 
     @Override
@@ -142,21 +97,7 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (dataDogLogger != null) {
-            dataDogLogger.logEvent("startVideoRecording", isSuccess.toString());
-        }
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("startVideoRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("startVideoRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     @Override
@@ -167,21 +108,7 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (dataDogLogger != null) {
-            dataDogLogger.logEvent("stopVideoRecording", isSuccess.toString());
-        }
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("stopVideoRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("stopVideoRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     @Override
@@ -200,18 +127,14 @@ public class CameraZ implements Photo, Video, Audio {
 
     @Override
     public List<CameraFileMetadata> getAudiosMetadata() {
-        if (audiosMetadata == null) {
-            CameraCommand command = new CameraCommand.Builder()
-                    .setToken(cameraService.getToken())
-                    .setCode(2)
-                    .setInformation("metadata")
-                    .setType("audios")
-                    .build();
-            CameraCommandResult result = cameraService.sendCommand(command);
-            audiosMetadata = parseToMetadataList(result);
-        }
-
-        return audiosMetadata;
+        CameraCommand command = new CameraCommand.Builder()
+                .setToken(cameraService.getToken())
+                .setCode(2)
+                .setInformation("metadata")
+                .setType("audios")
+                .build();
+        CameraCommandResult result = cameraService.sendCommand(command);
+        return parseToMetadataList(result);
     }
 
     @Override
@@ -222,21 +145,7 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("audio")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (dataDogLogger != null) {
-            dataDogLogger.logEvent("startAudioRecording", isSuccess.toString());
-        }
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("startAudioRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("startAudioRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     @Override
@@ -247,21 +156,7 @@ public class CameraZ implements Photo, Video, Audio {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (dataDogLogger != null) {
-            dataDogLogger.logEvent("stopAudioRecording", isSuccess.toString());
-        }
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("stopAudioRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("stopAudioRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     @Override

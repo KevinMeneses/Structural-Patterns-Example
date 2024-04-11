@@ -1,4 +1,3 @@
 package com.meneses.refactor.camera;
 
-public interface Camera {
-}
+public interface Camera { }

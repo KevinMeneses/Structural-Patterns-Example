@@ -1,14 +1,16 @@
 package com.meneses.refactor;
 
-import com.meneses.refactor.camera.Audio;
-import com.meneses.refactor.camera.Camera;
-import com.meneses.refactor.camera.Photo;
-import com.meneses.refactor.camera.Video;
+import com.meneses.refactor.camera.*;
+import com.meneses.refactor.camera.decorator.AudioRecorderLogger;
+import com.meneses.refactor.camera.decorator.ImageRecorderLogger;
+import com.meneses.refactor.camera.decorator.VideoRecorderLogger;
+import com.meneses.refactor.camera.impl.CameraCache;
 import com.meneses.refactor.camera.impl.CameraY;
 import com.meneses.refactor.camera.impl.CameraZ;
-import com.meneses.refactor.logger.DataDogLogger;
-import com.meneses.refactor.logger.LocalLogger;
-import com.meneses.refactor.logger.NewRelicLogger;
+import com.meneses.refactor.logger.impl.CameraAnalytics;
+import com.meneses.refactor.logger.impl.DataDogLogger;
+import com.meneses.refactor.logger.impl.LocalLogger;
+import com.meneses.refactor.logger.impl.NewRelicLogger;
 
 import java.util.Scanner;
 
@@ -26,6 +28,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int cameraType = scanner.nextInt();
+
         CameraFactory cameraFactory = new CameraFactory(cameraService);
         Camera camera = cameraFactory.create(cameraType);
         if (camera == null) {
@@ -33,19 +36,25 @@ public class Main {
             return;
         }
 
-        DataDogLogger dataDogLogger = new DataDogLogger();
-        NewRelicLogger newRelicLogger = new NewRelicLogger();
-        LocalLogger localLogger = new LocalLogger();
+        CameraAnalytics analytics = new CameraAnalytics();
 
-        if (camera instanceof CameraY) {
-            ((CameraY) camera).setNewRelicLogger(newRelicLogger);
-            ((CameraY) camera).setLocalLogger(localLogger);
+        if (camera instanceof FullCamera) {
+            camera = new CameraCache((FullCamera) camera);
         }
 
-        if (camera instanceof CameraZ) {
-            ((CameraZ) camera).setDataDogLogger(dataDogLogger);
-            ((CameraZ) camera).setNewRelicLogger(newRelicLogger);
-            ((CameraZ) camera).setLocalLogger(localLogger);
+        if (camera instanceof ImageRecorder) {
+            camera = new ImageRecorderLogger((ImageRecorder) camera, analytics);
+            analytics.addLogger(new LocalLogger());
+        }
+
+        if (camera instanceof VideoRecorder) {
+            camera = new VideoRecorderLogger((VideoRecorder) camera, analytics);
+            analytics.addLogger(new NewRelicLogger());
+        }
+
+        if (camera instanceof AudioRecorder) {
+            camera = new AudioRecorderLogger((AudioRecorder) camera, analytics);
+            analytics.addLogger(new DataDogLogger());
         }
 
         System.out.println(
@@ -61,23 +70,23 @@ public class Main {
         try {
             switch (action) {
                 case 1:
-                    result = ((Photo)camera).takePhoto();
+                    result = ((ImageRecorder)camera).takePhoto();
                     System.out.println("Foto tomada: " + result);
                     break;
                 case 2:
-                    result = ((Video)camera).startVideoRecording();
+                    result = ((VideoRecorder)camera).startVideoRecording();
                     System.out.println("Grabacion de video iniciada: " + result);
                     System.out.println("Ingrese cualquier tecla para finalizar la grabación");
                     scanner.nextByte();
-                    result = ((Video)camera).stopVideoRecording();
+                    result = ((VideoRecorder)camera).stopVideoRecording();
                     System.out.println("Grabacion de video terminada: " + result);
                     break;
                 case 3:
-                    result = ((Audio)camera).startAudioRecording();
+                    result = ((AudioRecorder)camera).startAudioRecording();
                     System.out.println("Grabacion de audio iniciada: " + result);
                     System.out.println("Ingrese cualquier tecla para finalizar la grabación");
                     scanner.nextByte();
-                    result = ((Audio)camera).stopAudioRecording();
+                    result = ((AudioRecorder)camera).stopAudioRecording();
                     System.out.println("Grabacion de audio terminada: " + result);
                     break;
                 default:

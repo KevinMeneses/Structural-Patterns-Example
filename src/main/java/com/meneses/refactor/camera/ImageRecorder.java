@@ -1,11 +1,11 @@
 package com.meneses.refactor.camera;
 
-import com.meneses.legacy.camera.model.CameraFile;
-import com.meneses.legacy.camera.model.CameraFileMetadata;
+import com.meneses.refactor.camera.model.CameraFile;
+import com.meneses.refactor.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public interface Photo extends Camera {
+public interface ImageRecorder extends Camera {
     CameraFile getPhoto();
     List<CameraFileMetadata> getPhotosMetadata();
     Boolean takePhoto();

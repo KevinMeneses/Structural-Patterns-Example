@@ -1,8 +1,9 @@
 package com.meneses.legacy.camera.impl;
 
 import com.meneses.legacy.*;
-import com.meneses.legacy.camera.Photo;
-import com.meneses.legacy.camera.Video;
+import com.meneses.legacy.camera.Camera;
+import com.meneses.legacy.camera.ImageRecorder;
+import com.meneses.legacy.camera.VideoRecorder;
 import com.meneses.legacy.camera.model.CameraCommand;
 import com.meneses.legacy.camera.model.CameraCommandResult;
 import com.meneses.legacy.camera.model.CameraFile;
@@ -12,7 +13,7 @@ import com.meneses.legacy.logger.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraY implements Photo, Video {
+public class CameraY implements ImageRecorder, VideoRecorder {
     private final CameraService cameraService;
     private NewRelicLogger newRelicLogger;
     private LocalLogger localLogger;

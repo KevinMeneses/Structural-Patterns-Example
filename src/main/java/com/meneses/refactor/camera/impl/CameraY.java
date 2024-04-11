@@ -1,32 +1,22 @@
 package com.meneses.refactor.camera.impl;
 
-import com.meneses.legacy.camera.model.CameraFile;
-import com.meneses.legacy.camera.model.CameraFileMetadata;
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.ImageRecorder;
+import com.meneses.refactor.camera.model.CameraFile;
+import com.meneses.refactor.camera.model.CameraFileMetadata;
 import com.meneses.refactor.CameraService;
-import com.meneses.refactor.camera.Photo;
-import com.meneses.refactor.camera.Video;
+import com.meneses.refactor.camera.VideoRecorder;
 import com.meneses.refactor.camera.model.CameraCommand;
 import com.meneses.refactor.camera.model.CameraCommandResult;
-import com.meneses.refactor.logger.LocalLogger;
-import com.meneses.refactor.logger.NewRelicLogger;
+import com.meneses.refactor.logger.impl.LocalLogger;
+import com.meneses.refactor.logger.impl.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraY implements Photo, Video {
+public class CameraY implements ImageRecorder, VideoRecorder {
     private final CameraService cameraService;
-    private NewRelicLogger newRelicLogger;
-    private LocalLogger localLogger;
-
     public CameraY(CameraService cameraService) {
         this.cameraService = cameraService;
-    }
-
-    public void setNewRelicLogger(NewRelicLogger newRelicLogger) {
-        this.newRelicLogger = newRelicLogger;
-    }
-
-    public void setLocalLogger(LocalLogger localLogger) {
-        this.localLogger = localLogger;
     }
 
     @Override
@@ -69,17 +59,7 @@ public class CameraY implements Photo, Video {
                 .setCode(3)
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("takePhoto", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("takePhoto", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     private Boolean parseToBoolean(CameraCommandResult result) {
@@ -119,17 +99,7 @@ public class CameraY implements Photo, Video {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("startVideoRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("startVideoRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
     @Override
@@ -140,17 +110,7 @@ public class CameraY implements Photo, Video {
                 .setInformation("video")
                 .build();
         CameraCommandResult result = cameraService.sendCommand(command);
-        Boolean isSuccess = parseToBoolean(result);
-
-        if (newRelicLogger != null) {
-            newRelicLogger.logEvent("stopVideoRecording", isSuccess.toString());
-        }
-
-        if (localLogger != null) {
-            localLogger.logEvent("stopVideoRecording", isSuccess.toString());
-        }
-
-        return isSuccess;
+        return parseToBoolean(result);
     }
 
 

@@ -1,15 +1,16 @@
 package com.meneses.refactor.camera.impl;
 
-import com.meneses.legacy.camera.model.CameraFile;
-import com.meneses.legacy.camera.model.CameraFileMetadata;
+import com.meneses.refactor.camera.ImageRecorder;
+import com.meneses.refactor.camera.model.CameraFile;
+import com.meneses.refactor.camera.model.CameraFileMetadata;
 import com.meneses.refactor.CameraService;
-import com.meneses.refactor.camera.Photo;
+import com.meneses.refactor.camera.Camera;
 import com.meneses.refactor.camera.model.CameraCommand;
 import com.meneses.refactor.camera.model.CameraCommandResult;
 
 import java.util.List;
 
-public class CameraX implements Photo {
+public class CameraX implements ImageRecorder {
     private final CameraService cameraService;
 
     public CameraX(CameraService cameraService) {
@@ -55,11 +56,6 @@ public class CameraX implements Photo {
         CameraCommandResult result = cameraService.sendCommand(command);
         return parseToBoolean(result);
     }
-
-
-
-
-
 
     private Boolean parseToBoolean(CameraCommandResult result) {
         return true;

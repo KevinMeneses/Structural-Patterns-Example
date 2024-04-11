@@ -1,7 +1,8 @@
 package com.meneses.legacy.camera.impl;
 
 import com.meneses.legacy.*;
-import com.meneses.legacy.camera.Photo;
+import com.meneses.legacy.camera.Camera;
+import com.meneses.legacy.camera.ImageRecorder;
 import com.meneses.legacy.camera.model.CameraCommand;
 import com.meneses.legacy.camera.model.CameraCommandResult;
 import com.meneses.legacy.camera.model.CameraFile;
@@ -9,7 +10,7 @@ import com.meneses.legacy.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public class CameraX implements Photo {
+public class CameraX implements ImageRecorder {
     private final CameraService cameraService;
 
     public CameraX(CameraService cameraService) {

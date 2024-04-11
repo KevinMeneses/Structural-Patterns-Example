@@ -1,9 +1,9 @@
 package com.meneses.legacy.camera.impl;
 
 import com.meneses.legacy.*;
-import com.meneses.legacy.camera.Audio;
-import com.meneses.legacy.camera.Photo;
-import com.meneses.legacy.camera.Video;
+import com.meneses.legacy.camera.AudioRecorder;
+import com.meneses.legacy.camera.ImageRecorder;
+import com.meneses.legacy.camera.VideoRecorder;
 import com.meneses.legacy.camera.model.CameraCommand;
 import com.meneses.legacy.camera.model.CameraCommandResult;
 import com.meneses.legacy.camera.model.CameraFile;
@@ -14,7 +14,7 @@ import com.meneses.legacy.logger.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraZ implements Photo, Video, Audio {
+public class CameraZ implements ImageRecorder, VideoRecorder, AudioRecorder {
     private final CameraService cameraService;
     private static List<CameraFileMetadata> photosMetadata;
     private static List<CameraFileMetadata> videosMetadata;

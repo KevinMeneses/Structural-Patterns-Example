@@ -1,9 +1,9 @@
 package com.meneses.legacy;
 
-import com.meneses.legacy.camera.Audio;
+import com.meneses.legacy.camera.AudioRecorder;
 import com.meneses.legacy.camera.Camera;
-import com.meneses.legacy.camera.Photo;
-import com.meneses.legacy.camera.Video;
+import com.meneses.legacy.camera.ImageRecorder;
+import com.meneses.legacy.camera.VideoRecorder;
 import com.meneses.legacy.camera.impl.CameraY;
 import com.meneses.legacy.camera.impl.CameraZ;
 import com.meneses.legacy.logger.DataDogLogger;
@@ -33,19 +33,15 @@ public class Main {
             return;
         }
 
-        DataDogLogger dataDogLogger = new DataDogLogger();
-        NewRelicLogger newRelicLogger = new NewRelicLogger();
-        LocalLogger localLogger = new LocalLogger();
-
         if (camera instanceof CameraY) {
-            ((CameraY) camera).setNewRelicLogger(newRelicLogger);
-            ((CameraY) camera).setLocalLogger(localLogger);
+            ((CameraY) camera).setNewRelicLogger(new NewRelicLogger());
+            ((CameraY) camera).setLocalLogger(new LocalLogger());
         }
 
         if (camera instanceof CameraZ) {
-            ((CameraZ) camera).setDataDogLogger(dataDogLogger);
-            ((CameraZ) camera).setNewRelicLogger(newRelicLogger);
-            ((CameraZ) camera).setLocalLogger(localLogger);
+            ((CameraZ) camera).setDataDogLogger(new DataDogLogger());
+            ((CameraZ) camera).setNewRelicLogger(new NewRelicLogger());
+            ((CameraZ) camera).setLocalLogger(new LocalLogger());
         }
 
         System.out.println(
@@ -61,23 +57,23 @@ public class Main {
         try {
             switch (action) {
                 case 1:
-                    result = ((Photo)camera).takePhoto();
+                    result = ((ImageRecorder)camera).takePhoto();
                     System.out.println("Foto tomada: " + result);
                     break;
                 case 2:
-                    result = ((Video)camera).startVideoRecording();
+                    result = ((VideoRecorder)camera).startVideoRecording();
                     System.out.println("Grabacion de video iniciada: " + result);
                     System.out.println("Ingrese cualquier tecla para finalizar la grabación");
                     scanner.nextByte();
-                    result = ((Video)camera).stopVideoRecording();
+                    result = ((VideoRecorder)camera).stopVideoRecording();
                     System.out.println("Grabacion de video terminada: " + result);
                     break;
                 case 3:
-                    result = ((Audio)camera).startAudioRecording();
+                    result = ((AudioRecorder)camera).startAudioRecording();
                     System.out.println("Grabacion de audio iniciada: " + result);
                     System.out.println("Ingrese cualquier tecla para finalizar la grabación");
                     scanner.nextByte();
-                    result = ((Audio)camera).stopAudioRecording();
+                    result = ((AudioRecorder)camera).stopAudioRecording();
                     System.out.println("Grabacion de audio terminada: " + result);
                     break;
                 default:
