@@ -17,4 +17,22 @@ public class CameraAnalytics implements Logger {
     public void addLogger(Logger logger) {
         loggers.add(logger);
     }
+
+    public static CameraAnalytics create(int cameraType) {
+        CameraAnalytics analytics = new CameraAnalytics();
+        switch (cameraType) {
+            case 1 -> analytics.addLogger(new LocalLogger());
+            case 2 -> {
+                analytics.addLogger(new LocalLogger());
+                analytics.addLogger(new NewRelicLogger());
+            }
+            case 3 -> {
+                analytics.addLogger(new LocalLogger());
+                analytics.addLogger(new NewRelicLogger());
+                analytics.addLogger(new DataDogLogger());
+            }
+        }
+
+        return analytics;
+    }
 }

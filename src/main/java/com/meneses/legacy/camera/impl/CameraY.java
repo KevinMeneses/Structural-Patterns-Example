@@ -13,7 +13,7 @@ import com.meneses.legacy.logger.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraY implements ImageRecorder, VideoRecorder {
+public class CameraY implements Camera, ImageRecorder, VideoRecorder {
     private final CameraService cameraService;
     private NewRelicLogger newRelicLogger;
     private LocalLogger localLogger;

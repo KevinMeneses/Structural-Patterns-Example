@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6bf961b-00f7-4705-ab28-a0819a5236bb" name="Changes" comment="many changes">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/Main.java" afterDir="false" />
+    <list default="true" id="c6bf961b-00f7-4705-ab28-a0819a5236bb" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/legacy/camera/impl/CameraZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/CameraFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/CameraFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/AudioRecorderLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/AudioRecorderLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/ImageRecorderLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/ImageRecorderLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/VideoRecorderLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/decorator/VideoRecorderLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/camera/impl/CameraZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/logger/impl/CameraAnalytics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/meneses/refactor/logger/impl/CameraAnalytics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,16 +43,18 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kevinmeneses/IdeaProjects/structural-patterns-example/src/main/java/com/meneses/refactor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.com.meneses.refactor.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/kevinmeneses/IdeaProjects/structural-patterns-example/src/main/java/com/meneses/refactor"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/meneses/refactor" />
@@ -121,13 +135,33 @@
       <option name="project" value="LOCAL" />
       <updated>1712809922247</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix">
+      <option name="closed" value="true" />
+      <created>1712894331987</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712894331987</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
     <MESSAGE value="many changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="many changes" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>

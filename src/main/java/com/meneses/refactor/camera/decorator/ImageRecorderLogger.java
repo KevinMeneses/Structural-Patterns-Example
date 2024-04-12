@@ -1,5 +1,6 @@
 package com.meneses.refactor.camera.decorator;
 
+import com.meneses.refactor.camera.Camera;
 import com.meneses.refactor.camera.ImageRecorder;
 import com.meneses.refactor.camera.model.CameraFile;
 import com.meneses.refactor.camera.model.CameraFileMetadata;
@@ -7,7 +8,7 @@ import com.meneses.refactor.logger.Logger;
 
 import java.util.List;
 
-public class ImageRecorderLogger implements ImageRecorder {
+public class ImageRecorderLogger implements Camera, ImageRecorder {
     private final ImageRecorder camera;
     protected final Logger logger;
 

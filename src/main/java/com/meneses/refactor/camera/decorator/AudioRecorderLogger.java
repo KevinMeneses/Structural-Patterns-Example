@@ -1,17 +1,20 @@
 package com.meneses.refactor.camera.decorator;
 
 import com.meneses.refactor.camera.AudioRecorder;
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.VideoRecorder;
 import com.meneses.refactor.camera.model.CameraFile;
 import com.meneses.refactor.camera.model.CameraFileMetadata;
 import com.meneses.refactor.logger.Logger;
 
 import java.util.List;
 
-public class AudioRecorderLogger implements AudioRecorder {
+public class AudioRecorderLogger extends VideoRecorderLogger implements Camera, AudioRecorder {
     private final AudioRecorder camera;
     private final Logger logger;
 
     public AudioRecorderLogger(AudioRecorder camera, Logger logger) {
+        super((VideoRecorder) camera, logger);
         this.camera = camera;
         this.logger = logger;
     }

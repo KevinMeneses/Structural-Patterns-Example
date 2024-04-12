@@ -5,6 +5,6 @@ import com.meneses.refactor.logger.Logger;
 public class NewRelicLogger implements Logger {
     @Override
     public void logEvent(String event, String value) {
-        System.out.println("Sending " + event + ":" + value + " to NewRelic");
+        System.out.println("Sending " + event + ": " + value + " to NewRelic");
     }
 }

@@ -1,5 +1,7 @@
 package com.meneses.refactor.camera.decorator;
 
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.ImageRecorder;
 import com.meneses.refactor.camera.VideoRecorder;
 import com.meneses.refactor.camera.model.CameraFile;
 import com.meneses.refactor.camera.model.CameraFileMetadata;
@@ -7,11 +9,12 @@ import com.meneses.refactor.logger.Logger;
 
 import java.util.List;
 
-public class VideoRecorderLogger implements VideoRecorder {
+public class VideoRecorderLogger extends ImageRecorderLogger implements Camera, VideoRecorder {
     private final VideoRecorder camera;
     protected final Logger logger;
 
     public VideoRecorderLogger(VideoRecorder camera, Logger logger) {
+        super((ImageRecorder) camera, logger);
         this.camera = camera;
         this.logger = logger;
     }

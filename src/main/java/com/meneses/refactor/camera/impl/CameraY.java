@@ -8,12 +8,10 @@ import com.meneses.refactor.CameraService;
 import com.meneses.refactor.camera.VideoRecorder;
 import com.meneses.refactor.camera.model.CameraCommand;
 import com.meneses.refactor.camera.model.CameraCommandResult;
-import com.meneses.refactor.logger.impl.LocalLogger;
-import com.meneses.refactor.logger.impl.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraY implements ImageRecorder, VideoRecorder {
+public class CameraY implements Camera, ImageRecorder, VideoRecorder {
     private final CameraService cameraService;
     public CameraY(CameraService cameraService) {
         this.cameraService = cameraService;

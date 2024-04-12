@@ -10,7 +10,7 @@ import com.meneses.refactor.camera.model.CameraCommandResult;
 
 import java.util.List;
 
-public class CameraX implements ImageRecorder {
+public class CameraX implements Camera, ImageRecorder {
     private final CameraService cameraService;
 
     public CameraX(CameraService cameraService) {

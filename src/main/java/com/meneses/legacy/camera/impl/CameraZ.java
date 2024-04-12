@@ -2,6 +2,7 @@ package com.meneses.legacy.camera.impl;
 
 import com.meneses.legacy.*;
 import com.meneses.legacy.camera.AudioRecorder;
+import com.meneses.legacy.camera.Camera;
 import com.meneses.legacy.camera.ImageRecorder;
 import com.meneses.legacy.camera.VideoRecorder;
 import com.meneses.legacy.camera.model.CameraCommand;
@@ -14,7 +15,7 @@ import com.meneses.legacy.logger.NewRelicLogger;
 
 import java.util.List;
 
-public class CameraZ implements ImageRecorder, VideoRecorder, AudioRecorder {
+public class CameraZ implements Camera, ImageRecorder, VideoRecorder, AudioRecorder {
     private final CameraService cameraService;
     private static List<CameraFileMetadata> photosMetadata;
     private static List<CameraFileMetadata> videosMetadata;

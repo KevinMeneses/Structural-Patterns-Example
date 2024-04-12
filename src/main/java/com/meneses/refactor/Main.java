@@ -1,14 +1,10 @@
 package com.meneses.refactor;
 
-import com.meneses.refactor.camera.*;
-import com.meneses.refactor.camera.decorator.AudioRecorderLogger;
-import com.meneses.refactor.camera.decorator.ImageRecorderLogger;
-import com.meneses.refactor.camera.decorator.VideoRecorderLogger;
-import com.meneses.refactor.camera.impl.CameraCache;
+import com.meneses.refactor.camera.AudioRecorder;
+import com.meneses.refactor.camera.Camera;
+import com.meneses.refactor.camera.ImageRecorder;
+import com.meneses.refactor.camera.VideoRecorder;
 import com.meneses.refactor.logger.impl.CameraAnalytics;
-import com.meneses.refactor.logger.impl.DataDogLogger;
-import com.meneses.refactor.logger.impl.LocalLogger;
-import com.meneses.refactor.logger.impl.NewRelicLogger;
 
 import java.util.Scanner;
 
@@ -27,32 +23,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int cameraType = scanner.nextInt();
 
-        CameraFactory cameraFactory = new CameraFactory(cameraService);
+        CameraAnalytics cameraAnalytics = CameraAnalytics.create(cameraType);
+        CameraFactory cameraFactory = new CameraFactory(cameraService, cameraAnalytics);
         Camera camera = cameraFactory.create(cameraType);
+
         if (camera == null) {
             System.out.println("Opcion no soportada");
             return;
-        }
-
-        CameraAnalytics analytics = new CameraAnalytics();
-
-        if (camera instanceof FullCamera) {
-            camera = new CameraCache((FullCamera) camera);
-        }
-
-        if (camera instanceof ImageRecorder) {
-            camera = new ImageRecorderLogger((ImageRecorder) camera, analytics);
-            analytics.addLogger(new LocalLogger());
-        }
-
-        if (camera instanceof VideoRecorder) {
-            camera = new VideoRecorderLogger((VideoRecorder) camera, analytics);
-            analytics.addLogger(new NewRelicLogger());
-        }
-
-        if (camera instanceof AudioRecorder) {
-            camera = new AudioRecorderLogger((AudioRecorder) camera, analytics);
-            analytics.addLogger(new DataDogLogger());
         }
 
         System.out.println(

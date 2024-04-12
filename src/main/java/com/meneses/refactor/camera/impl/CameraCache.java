@@ -1,14 +1,14 @@
 package com.meneses.refactor.camera.impl;
 
 
-import com.meneses.refactor.camera.AudioRecorder;
+import com.meneses.refactor.camera.Camera;
 import com.meneses.refactor.camera.FullCamera;
 import com.meneses.refactor.camera.model.CameraFile;
 import com.meneses.refactor.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public class CameraCache implements FullCamera {
+public class CameraCache implements Camera, FullCamera {
     private final FullCamera camera;
     private static List<CameraFileMetadata> photosMetadata;
     private static List<CameraFileMetadata> videosMetadata;

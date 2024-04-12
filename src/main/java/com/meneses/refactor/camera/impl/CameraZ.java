@@ -1,6 +1,7 @@
 package com.meneses.refactor.camera.impl;
 
 import com.meneses.refactor.CameraService;
+import com.meneses.refactor.camera.Camera;
 import com.meneses.refactor.camera.FullCamera;
 import com.meneses.refactor.camera.model.CameraCommand;
 import com.meneses.refactor.camera.model.CameraCommandResult;
@@ -9,7 +10,7 @@ import com.meneses.refactor.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public class CameraZ implements FullCamera {
+public class CameraZ implements Camera, FullCamera {
     private final CameraService cameraService;
 
     public CameraZ(CameraService cameraService) {
