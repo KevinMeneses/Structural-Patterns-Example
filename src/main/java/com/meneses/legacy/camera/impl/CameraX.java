@@ -10,7 +10,7 @@ import com.meneses.legacy.camera.model.CameraFileMetadata;
 
 import java.util.List;
 
-public class CameraX implements ImageRecorder {
+public class CameraX implements Camera, ImageRecorder {
     private final CameraService cameraService;
 
     public CameraX(CameraService cameraService) {

@@ -5,8 +5,6 @@ import com.meneses.refactor.camera.decorator.AudioRecorderLogger;
 import com.meneses.refactor.camera.decorator.ImageRecorderLogger;
 import com.meneses.refactor.camera.decorator.VideoRecorderLogger;
 import com.meneses.refactor.camera.impl.CameraCache;
-import com.meneses.refactor.camera.impl.CameraY;
-import com.meneses.refactor.camera.impl.CameraZ;
 import com.meneses.refactor.logger.impl.CameraAnalytics;
 import com.meneses.refactor.logger.impl.DataDogLogger;
 import com.meneses.refactor.logger.impl.LocalLogger;

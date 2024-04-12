@@ -26,6 +26,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int cameraType = scanner.nextInt();
+
         CameraFactory cameraFactory = new CameraFactory(cameraService);
         Camera camera = cameraFactory.create(cameraType);
         if (camera == null) {
